@@ -52,6 +52,10 @@ You should then be able to cURL charges like so:
 curl localhost:9000/1/charges -u your-secret-api-key: -d "amount=400" -d "currency=AUD" -d "description=test charge" -d "email=roland@pin.net.au" -d "ip_address=203.192.1.172" -d "card[number]=5520000000000000" -d "card[expiry_month]=05" -d "card[expiry_year]=2014" -d "card[cvc]=123" -d "card[name]=Roland Robot" -d "card[address_line1]=42 Sevenoaks St" -d "card[address_line2]=" -d "card[address_city]=Lathlain" -d "card[address_postcode]=6454" -d "card[address_state]=WA" -d "card[address_country]=Australia"
 ```
 
+## Should I use this in Production?
+
+No.
+
 ## Contributing
 
 1. Fork it
