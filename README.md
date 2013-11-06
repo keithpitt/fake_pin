@@ -27,9 +27,13 @@ $ gem install fake_pin
 In your Rails Routes folder:
 
 ```ruby
-if Rails.env.development? || Rails.env.test?
-  constraints :host => /pin.your-app.dev/ do
-    mount FakePin::Rack.new => '/'
+YourApp::Application.routes.draw do
+  # ...
+  
+  if Rails.env.development? || Rails.env.test?
+    constraints :host => /pin.your-app.dev/ do
+      mount FakePin::Rack.new => '/'
+    end
   end
 end
 ```
