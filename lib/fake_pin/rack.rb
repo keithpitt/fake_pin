@@ -1,9 +1,16 @@
+require 'json'
+require 'rack'
+
 module FakePin
   class Rack
     def call(env)
       request = ::Rack::Request.new(env)
       method  = env['REQUEST_METHOD']
       path    = env['PATH_INFO']
+
+      # Strip the first slash if there is one. When mounted in Rails, there is no slash.
+      # When running as a standlone rack app, there is one.
+      path = path.gsub(/\A\//, '')
 
       params  = if env['CONTENT_TYPE'] == "application/json"
                   Params.new(JSON.parse(request.body.read))

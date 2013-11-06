@@ -1,0 +1,16 @@
+#!/usr/bin/env ruby
+
+# Set the process name before we go to far in
+$PROGRAM_NAME = 'fake_pin'
+
+# Add the fake_pin lib directory to the load path
+root_dir = File.expand_path(File.join(File.dirname(__FILE__), '..'))
+lib_dir  = File.join(root_dir, 'lib')
+$LOAD_PATH.unshift(lib_dir) unless $LOAD_PATH.include?(lib_dir)
+
+require 'fake_pin'
+require 'rack'
+
+Rack::Handler::WEBrick.run(
+  FakePin::Rack.new, :Port => 9000
+)
