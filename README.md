@@ -2,6 +2,8 @@
 
 A basic implmentation of the Pin Payments REST API. This is great for when you want to test your API client or want an offline version of the API for automated testing.
 
+**Note: The whole API isn't supported yet. Only adding cards, charging cards, and adding customers works currently. If you want one of the other API endpoints supported, Pull Requests are welcome, or just create an issue and I'll do it ASAP**
+
 ## Installation
 
 Add this line to your application's Gemfile:
