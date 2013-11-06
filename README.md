@@ -6,19 +6,33 @@ TODO: Write a gem description
 
 Add this line to your application's Gemfile:
 
-    gem 'fake_pin'
+```ruby
+gem 'fake_pin'
+```
 
 And then execute:
 
-    $ bundle
+```bash
+$ bundle
+```
 
 Or install it yourself as:
 
-    $ gem install fake_pin
+```bash
+$ gem install fake_pin
+```
 
 ## Usage
 
-TODO: Write usage instructions here
+In your Rails Routes folder:
+
+```ruby
+  if Rails.env.development? || Rails.env.test?
+    constraints :host => /pin.your-app.dev/ do
+      mount FakePin::Rack.new => '/'
+    end
+  end
+```
 
 ## Contributing
 
