@@ -8,9 +8,9 @@ Gem::Specification.new do |spec|
   spec.version       = FakePin::VERSION
   spec.authors       = ["Keith Pitt"]
   spec.email         = ["me@keithpitt.com"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
-  spec.homepage      = ""
+  spec.description   = %q{A rack-mountable version of the Pin Payments API}
+  spec.summary       = %q{A rack-mountable version of the Pin Payments API}
+  spec.homepage      = "https://github.com/keithpitt/fake_pin"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
@@ -18,6 +18,9 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]
 
+  spec.add_dependency 'rack'
+
   spec.add_development_dependency "bundler", "~> 1.3"
   spec.add_development_dependency "rake"
+  spec.add_development_dependency "rspec"
 end
