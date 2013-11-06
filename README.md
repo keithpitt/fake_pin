@@ -1,6 +1,6 @@
 # FakePin
 
-TODO: Write a gem description
+A basic implmentation of the Pin Payments REST API. This is great for when you want to test your API client or want an offline version of the API for automated testing.
 
 ## Installation
 
