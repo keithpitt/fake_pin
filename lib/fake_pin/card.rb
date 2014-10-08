@@ -2,8 +2,8 @@ module FakePin
   class Card
     class UnrecognisedCardSchemeError < RuntimeError; end
 
-    REQUIRED_PARAMS = :number, :expiry_month, :expiry_year, :name, :address_line1,
-                      :address_city, :address_postcode, :address_state, :address_country
+    REQUIRED_PARAMS = :number, :expiry_month, :expiry_year, :name
+    REQUIRED_ADDRESS_PARAMS = :address_line1, :address_city, :address_postcode, :address_state, :address_country
 
     SCHEMES = {
       'visa'               => /^4\d{12}(\d{3})?$/,
@@ -29,7 +29,13 @@ module FakePin
     end
 
     def create
-      @params.require(*REQUIRED_PARAMS)
+      required_params = if FakePin.configuration.require_address
+                          [ *REQUIRED_PARAMS, *REQUIRED_ADDRESS_PARAMS ]
+                        else
+                          REQUIRED_PARAMS
+                        end
+
+      @params.require(*required_params)
 
       number = @params['number'].to_s.gsub(/[^0-9]+/, '')
 
